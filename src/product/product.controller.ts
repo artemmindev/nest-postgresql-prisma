@@ -13,7 +13,7 @@ export class ProductController {
 
   @Get(':id')
   async getProduct(@Param('id') id: number): Promise<Product | null> {
-    return this.productService.getProduct(id);
+    return this.productService.getProduct(Number(id));
   }
 
   @Post()
@@ -23,11 +23,11 @@ export class ProductController {
 
   @Put(':id')
   async updateProduct(@Body() updateData: Product, @Param('id') id: number): Promise<Product> {
-    return this.productService.updateProduct(id, updateData)
+    return this.productService.updateProduct(Number(id), updateData)
   }
 
   @Delete(':id')
   async deleteProduct(@Param('id') id: number): Promise<Product> {
-    return this.productService.deleteProduct(id)
+    return this.productService.deleteProduct(Number(id))
   }
 }
